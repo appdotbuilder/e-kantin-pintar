@@ -1,6 +1,6 @@
-/* E-Kantin Pintar Styles */
+/* E-Kantin Pintar Styles - Light Blue Theme */
 
-/* Custom animations for Indonesian flair */
+/* Custom animations for modern flair */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -10,17 +10,17 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Custom Indonesian-themed gradient backgrounds */
-.bg-indonesia-flag {
-  background: linear-gradient(180deg, #ff0000 0%, #ff0000 50%, #ffffff 50%, #ffffff 100%);
+/* Custom light blue-themed gradient backgrounds */
+.bg-light-blue-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
 }
 
-.bg-indonesia-sunset {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ffa726 50%, #ffcc02 100%);
+.bg-light-blue-secondary {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
 }
 
-.bg-indonesia-nature {
-  background: linear-gradient(135deg, #4caf50 0%, #8bc34a 50%, #cddc39 100%);
+.bg-light-blue-accent {
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #7dd3fc 100%);
 }
 
 /* Custom scrollbar for better UX */
@@ -30,17 +30,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f5f9;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ffa726;
+  background: #60a5fa;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff9800;
+  background: #3b82f6;
 }
 
 /* Smooth transitions for better UX */
@@ -53,17 +53,17 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid #ffa726;
+  outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
 
-/* Indonesian-style card hover effects */
+/* Modern card hover effects */
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
 }
 
-/* Custom Indonesian food emoji backgrounds for fun */
+/* Custom food emoji backgrounds for fun */
 .food-bg::before {
   content: "🍽️🥙🥤🍨";
   position: absolute;
@@ -93,11 +93,11 @@ select:focus-visible {
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .bg-orange-50 {
+  .bg-blue-50 {
     background-color: #fff !important;
   }
   
-  .text-orange-600 {
+  .text-blue-600 {
     color: #000 !important;
     font-weight: bold;
   }
@@ -141,68 +141,111 @@ select:focus-visible {
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
 }
 
-/* Loading states with Indonesian flair */
+/* Loading states with light blue theme */
 .loading-spinner {
-  border-color: #ffa726;
+  border-color: #60a5fa;
   border-top-color: transparent;
 }
 
-/* Success/error states with Indonesian colors */
+/* Success/error states */
 .success-state {
-  background: linear-gradient(135deg, #4caf50, #8bc34a);
+  background: linear-gradient(135deg, #10b981, #34d399);
 }
 
 .error-state {
-  background: linear-gradient(135deg, #f44336, #e91e63);
+  background: linear-gradient(135deg, #ef4444, #f87171);
 }
 
-/* Custom badge styles for Indonesian theme */
-.badge-indonesia {
-  background: linear-gradient(135deg, #ff0000, #ffffff);
-  color: #ff0000;
-  border: 1px solid #ff0000;
+/* Custom badge styles for light blue theme */
+.badge-light-blue {
+  background: linear-gradient(135deg, #3b82f6, #ffffff);
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
 }
 
 /* QR Code styling */
 .qr-code-container {
   background: repeating-linear-gradient(
     45deg,
-    #f5f5f5,
-    #f5f5f5 2px,
+    #f8fafc,
+    #f8fafc 2px,
     #ffffff 2px,
     #ffffff 4px
   );
-  border: 2px dashed #666;
+  border: 2px dashed #64748b;
 }
 
-/* Indonesian flag colors for status indicators */
-.status-red {
-  background-color: #ff0000;
+/* Light blue theme colors for status indicators */
+.status-blue {
+  background-color: #3b82f6;
   color: white;
 }
 
 .status-white {
   background-color: #ffffff;
-  color: #ff0000;
-  border: 1px solid #ff0000;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
 }
 
 /* Custom table styles for better readability */
 .data-table th {
-  background: linear-gradient(135deg, #ffa726, #ff9800);
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
   color: white;
   font-weight: 600;
 }
 
 .data-table tr:nth-child(even) {
-  background-color: rgba(255, 167, 38, 0.05);
+  background-color: rgba(59, 130, 246, 0.05);
 }
 
-/* Indonesian-inspired shadows */
-.shadow-indonesia {
-  box-shadow: 0 4px 6px rgba(255, 167, 38, 0.1), 0 1px 3px rgba(255, 167, 38, 0.08);
+/* Light blue-inspired shadows */
+.shadow-light-blue {
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.1), 0 1px 3px rgba(59, 130, 246, 0.08);
 }
 
-.shadow-indonesia-lg {
-  box-shadow: 0 10px 15px rgba(255, 167, 38, 0.1), 0 4px 6px rgba(255, 167, 38, 0.05);
+.shadow-light-blue-lg {
+  box-shadow: 0 10px 15px rgba(59, 130, 246, 0.1), 0 4px 6px rgba(59, 130, 246, 0.05);
+}
+
+/* Additional light blue theme utilities */
+.bg-light-blue-gradient {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 25%, #93c5fd 50%, #60a5fa 75%, #3b82f6 100%);
+}
+
+.border-light-blue {
+  border-color: #93c5fd;
+}
+
+.text-light-blue-primary {
+  color: #3b82f6;
+}
+
+.text-light-blue-secondary {
+  color: #60a5fa;
+}
+
+/* Light blue button hover states */
+.btn-light-blue {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-light-blue:hover {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.2);
+}
+
+/* Light blue badge variants */
+.badge-light-blue-primary {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #93c5fd;
+}
+
+.badge-light-blue-secondary {
+  background-color: #f0f9ff;
+  color: #0c4a6e;
+  border: 1px solid #bae6fd;
 }

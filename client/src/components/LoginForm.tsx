@@ -11,12 +11,12 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onLogin }: LoginFormProps) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState<LoginInput>({
     username: '',
-    password: '',
+    password: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,96 +24,37 @@ export function LoginForm({ onLogin }: LoginFormProps) {
     setError(null);
 
     try {
-      // NOTE: This is a stub implementation since authentication endpoints are not implemented yet
-      // In a real implementation, this would call trpc.login.mutate(formData)
-      
-      // Simulate authentication based on demo credentials
-      const mockUsers = {
-        'student1': { 
-          user: { 
-            id: 1, 
-            username: 'student1', 
-            email: 'student1@school.edu',
-            password_hash: 'hashed_password',
-            role: 'student' as const, 
-            full_name: 'Ahmad Rizki',
-            phone: '081234567890',
-            created_at: new Date(),
-            updated_at: new Date(),
-          }, 
-          token: 'mock_student_token' 
-        },
-        'parent1': { 
-          user: { 
-            id: 2, 
-            username: 'parent1', 
-            email: 'parent1@email.com',
-            password_hash: 'hashed_password',
-            role: 'parent' as const, 
-            full_name: 'Siti Nurhaliza',
-            phone: '081234567891',
-            created_at: new Date(),
-            updated_at: new Date(),
-          }, 
-          token: 'mock_parent_token' 
-        },
-        'manager1': { 
-          user: { 
-            id: 3, 
-            username: 'manager1', 
-            email: 'manager1@school.edu',
-            password_hash: 'hashed_password',
-            role: 'canteen_manager' as const, 
-            full_name: 'Budi Santoso',
-            phone: '081234567892',
-            created_at: new Date(),
-            updated_at: new Date(),
-          }, 
-          token: 'mock_manager_token' 
-        },
-        'admin1': { 
-          user: { 
-            id: 4, 
-            username: 'admin1', 
-            email: 'admin1@school.edu',
-            password_hash: 'hashed_password',
-            role: 'admin' as const, 
-            full_name: 'Dr. Indira Sari',
-            phone: '081234567893',
-            created_at: new Date(),
-            updated_at: new Date(),
-          }, 
-          token: 'mock_admin_token' 
-        },
-      };
-
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      if (formData.password === 'password123' && mockUsers[formData.username as keyof typeof mockUsers]) {
-        const authData = mockUsers[formData.username as keyof typeof mockUsers];
-        onLogin(authData);
-      } else {
-        setError('Invalid username or password. Use demo accounts with password: password123');
-      }
-    } catch (err) {
-      setError('Login failed. Please try again.');
-      console.error('Login error:', err);
+      const authResponse = await trpc.login.mutate(formData);
+      onLogin(authResponse);
+    } catch (error) {
+      console.error('Login failed:', error);
+      setError('Invalid username or password. Please try again.');
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const fillDemoCredentials = (username: string) => {
+    setFormData({
+      username,
+      password: 'password123'
+    });
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {error && (
         <Alert className="border-red-200 bg-red-50">
-          <AlertDescription className="text-red-800">{error}</AlertDescription>
+          <AlertDescription className="text-red-800">
+            ❌ {error}
+          </AlertDescription>
         </Alert>
       )}
 
       <div className="space-y-2">
-        <Label htmlFor="username">Username</Label>
+        <Label htmlFor="username" className="text-sm font-medium text-gray-700">
+          Username
+        </Label>
         <Input
           id="username"
           type="text"
@@ -123,12 +64,14 @@ export function LoginForm({ onLogin }: LoginFormProps) {
             setFormData((prev: LoginInput) => ({ ...prev, username: e.target.value }))
           }
           required
-          disabled={isLoading}
+          className="border-blue-200 focus:border-blue-500 focus:ring-blue-500"
         />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password" className="text-sm font-medium text-gray-700">
+          Password
+        </Label>
         <Input
           id="password"
           type="password"
@@ -138,20 +81,69 @@ export function LoginForm({ onLogin }: LoginFormProps) {
             setFormData((prev: LoginInput) => ({ ...prev, password: e.target.value }))
           }
           required
-          disabled={isLoading}
+          className="border-blue-200 focus:border-blue-500 focus:ring-blue-500"
         />
       </div>
 
-      <Button type="submit" className="w-full" disabled={isLoading}>
+      <Button
+        type="submit"
+        disabled={isLoading}
+        className="w-full bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600 text-white"
+      >
         {isLoading ? (
-          <div className="flex items-center space-x-2">
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-            <span>Signing in...</span>
-          </div>
+          <>
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+            Signing In...
+          </>
         ) : (
-          'Sign In 🔓'
+          '🔐 Sign In'
         )}
       </Button>
+
+      <div className="pt-4 border-t border-blue-100">
+        <p className="text-sm text-gray-600 mb-3 text-center">Quick Demo Login:</p>
+        <div className="grid grid-cols-2 gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => fillDemoCredentials('student1')}
+            className="text-xs border-blue-200 text-blue-600 hover:bg-blue-50"
+          >
+            🎓 Student
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => fillDemoCredentials('parent1')}
+            className="text-xs border-blue-200 text-blue-600 hover:bg-blue-50"
+          >
+            👨‍👩‍👧‍👦 Parent
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => fillDemoCredentials('manager1')}
+            className="text-xs border-blue-200 text-blue-600 hover:bg-blue-50"
+          >
+            👨‍🍳 Manager
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => fillDemoCredentials('admin1')}
+            className="text-xs border-blue-200 text-blue-600 hover:bg-blue-50"
+          >
+            👨‍💼 Admin
+          </Button>
+        </div>
+        <p className="text-xs text-gray-500 text-center mt-2">
+          All demo accounts use password: <code className="bg-blue-100 text-blue-800 px-1 rounded">password123</code>
+        </p>
+      </div>
     </form>
   );
 }

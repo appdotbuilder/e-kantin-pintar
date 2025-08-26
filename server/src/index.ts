@@ -3,6 +3,11 @@ import { createHTTPServer } from '@trpc/server/adapters/standalone';
 import 'dotenv/config';
 import cors from 'cors';
 import superjson from 'superjson';
+import { z } from 'zod';
+import { getMenuItems } from './handlers/get_menu_items';
+import { login } from './handlers/login';
+import { seedData } from './handlers/seed_data';
+import { loginInputSchema } from './schema';
 
 const t = initTRPC.create({
   transformer: superjson,
@@ -14,6 +19,20 @@ const router = t.router;
 const appRouter = router({
   healthcheck: publicProcedure.query(() => {
     return { status: 'ok', timestamp: new Date().toISOString() };
+  }),
+  
+  getMenuItems: publicProcedure.query(() => {
+    return getMenuItems();
+  }),
+
+  login: publicProcedure
+    .input(loginInputSchema)
+    .mutation(async ({ input }) => {
+      return login(input);
+    }),
+
+  seedData: publicProcedure.mutation(() => {
+    return seedData();
   }),
 });
 

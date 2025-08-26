@@ -68,9 +68,9 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading E-Kantin Pintar...</p>
         </div>
       </div>
@@ -79,13 +79,13 @@ function App() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50">
         {/* Header */}
-        <header className="bg-white shadow-sm border-b-2 border-orange-200">
+        <header className="bg-white shadow-sm border-b-2 border-blue-200">
           <div className="container mx-auto px-4 py-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-sky-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">🍽️</span>
                 </div>
                 <div>
@@ -113,8 +113,8 @@ function App() {
 
               <TabsContent value="menu">
                 <div className="mb-6">
-                  <Alert className="bg-orange-50 border-orange-200">
-                    <AlertDescription className="text-orange-800">
+                  <Alert className="bg-blue-50 border-blue-200">
+                    <AlertDescription className="text-blue-800">
                       👋 Welcome! Browse our delicious menu below. Login to place orders and access more features.
                     </AlertDescription>
                   </Alert>
@@ -126,7 +126,7 @@ function App() {
                 <div className="max-w-md mx-auto">
                   <Card className="shadow-lg border-0 bg-white/90 backdrop-blur">
                     <CardHeader className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-sky-500 rounded-full mx-auto mb-4 flex items-center justify-center">
                         <span className="text-white text-2xl">🔐</span>
                       </div>
                       <CardTitle className="text-2xl">Welcome Back!</CardTitle>
@@ -157,7 +157,7 @@ function App() {
         </div>
 
         {/* Footer */}
-        <footer className="bg-white border-t-2 border-orange-200 mt-16">
+        <footer className="bg-white border-t-2 border-blue-200 mt-16">
           <div className="container mx-auto px-4 py-8">
             <div className="text-center">
               <div className="flex items-center justify-center space-x-2 mb-4">
@@ -194,13 +194,13 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b-2 border-orange-200">
+      <header className="bg-white shadow-sm border-b-2 border-blue-200">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-sky-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">🍽️</span>
               </div>
               <div>
